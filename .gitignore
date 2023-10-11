@@ -1,0 +1,6 @@
+*/__pycache__
+*/.DS_Store
+.idea/*
+data/cylinder_flow
+data/flag_simple
+
