@@ -80,7 +80,8 @@ The following datasets are available:
     sphere_dynamic_sizing
 
 `flag_minimal` is a truncated version of flag_simple, and is only used for
-integration tests. `flag_dynamic_sizing` and `sphere_dynamic_sizing` can be
+integration tests. 
+`flag_dynamic_sizing` and `sphere_dynamic_sizing` can be
 used to learn the sizing field. These datasets have the same structure as
 the other datasets, but contain the meshes in their state before remeshing,
 and define a matching `sizing_field` target for each mesh.

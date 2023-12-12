@@ -1,6 +1,11 @@
 */__pycache__
 */.DS_Store
 .idea/*
-data/cylinder_flow
-data/flag_simple
+data/datasets/cylinder_flow
+data/datasets/cylinder_flow_hdf5
+data/datasets/cylinder_flow_pytorch
+data/datasets/flag_simple
+data/datasets/flag_dynamics_sizing
+*.hdf5
+*.tfrecord
 
