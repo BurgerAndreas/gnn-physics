@@ -4,8 +4,15 @@
 data/datasets/cylinder_flow
 data/datasets/cylinder_flow_hdf5
 data/datasets/cylinder_flow_pytorch
+data/datasets/cylinder_flow_stanford
+data/datasets/cylinder_flow_pyg
 data/datasets/flag_simple
-data/datasets/flag_dynamics_sizing
+data/datasets/flag_dynamic_sizing
 *.hdf5
 *.tfrecord
-
+x_*
+archive
+archive/*
+outputs
+*/outputs/*
+wandb

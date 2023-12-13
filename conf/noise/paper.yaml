@@ -1,0 +1,4 @@
+# @package _global_
+data:
+  noise_scale: 0.02
+  noise_gamma: 1.0

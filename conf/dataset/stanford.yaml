@@ -1,0 +1,4 @@
+# @package _global_
+data:
+  use_stanford_data: True
+  datapath: cylinder_flow_stanford/meshgraphnets_miniset5traj_vis.pt
