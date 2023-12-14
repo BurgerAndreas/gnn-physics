@@ -9,9 +9,11 @@ data/datasets/cylinder_flow_pyg
 data/datasets/*/*.pt
 data/datasets/flag_simple
 data/datasets/flag_dynamic_sizing
+data/datasets/flag_dynamic_sizing/*
 *.hdf5
 *.tfrecord
-*andreas
+*andreas*
+andreas*
 archive
 archive/*
 outputs

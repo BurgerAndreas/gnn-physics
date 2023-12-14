@@ -297,17 +297,17 @@ def test(
             normal = torch.tensor(0)
             outflow = torch.tensor(5)
             loss_mask = torch.logical_or(
-                (torch.argmax(data.x[:, 2:], dim=1) == torch.tensor(0)),
-                (torch.argmax(data.x[:, 2:], dim=1) == torch.tensor(5)),
+                (torch.argmax(data.x[:, 2:], dim=1) == normal),
+                (torch.argmax(data.x[:, 2:], dim=1) == outflow),
             )
 
             eval_velocity = (
                 data.x[:, 0:2]
                 + stats.unnormalize(pred[:], mean_vec_y, std_vec_y) * DELTA_T
             )
-            gs_velocity = data.x[:, 0:2] + data.y[:] * DELTA_T
+            true_velocity = data.x[:, 0:2] + data.y[:] * DELTA_T
 
-            error = torch.sum((eval_velocity - gs_velocity) ** 2, axis=1)
+            error = torch.sum((eval_velocity - true_velocity) ** 2, axis=1)
             velocity_rmse += torch.sqrt(torch.mean(error[loss_mask]))
 
         num_loops += 1

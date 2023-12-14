@@ -219,7 +219,7 @@ def animate_rollout(cfg, num_steps=50):
 
 
 def get_single_step_pred(model, dataset, stats: list, device='cpu'):
-    """Single step predictions for all timesteps in the dataset.
+    """Single step predictions of the velocity for all timesteps in the dataset.
 
     Predictions are single step,
     because we use the ground truth as inputs to the model
@@ -284,6 +284,13 @@ def get_single_step_pred(model, dataset, stats: list, device='cpu'):
     return data_pred, data_true, data_error
 
 def get_rollout_pred(model, dataset, stats: list, device='cpu'):
+    """Predictions of velocity over a whole rollout.
+    Make sure to only pass in one trajectory, 
+    as code does not know where one trajectory starts and ends.
+    and that timesteps are in correct sequence (not shuffled).
+    """
+    if len(dataset) > 599:
+        print('Data passed to get_rollout_pred is more than one trajectory. This will lead to nonsensical results past 599 steps.')
     model.eval()
     # create placeholders that we will overwrite now
     data_pred = copy.deepcopy(dataset)
@@ -298,10 +305,11 @@ def get_rollout_pred(model, dataset, stats: list, device='cpu'):
         data_pred[t] = data_pred[t].to(device) 
         with torch.no_grad():
             # get the predicted acceleration
+            data_pred[t].x[:, 0:2] = last_x
             pred = model(data_pred[t], *stats)
             # pred gives the learnt accelaration (y) between two timsteps
             # next_vel = curr_vel + pred * DELTA_T
-            data_pred[t].x[:, 0:2] = last_x + pred[:] * DELTA_T
+            data_pred[t].x[:, 0:2] = data_pred[t].x[:, 0:2] + pred[:] * DELTA_T
             last_x = copy.deepcopy(data_pred[0].x[:, 0:2])
             # true values
             data_true[t].x[:, 0:2] = dataset[t].x[:, 0:2] + dataset[t].y * DELTA_T
