@@ -1,3 +1,4 @@
 # @package _global_
 data:
   train_test_same_traj: False
+  single_traj: False

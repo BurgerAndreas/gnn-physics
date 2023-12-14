@@ -3,8 +3,6 @@ import pathlib
 import numpy as np
 import torch
 import h5py
-import functools
-import json
 from torch_geometric.data import Data
 import enum
 import argparse

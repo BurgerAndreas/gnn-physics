@@ -1,0 +1,4 @@
+# @package _global_
+training:
+  train_size: 85
+  test_size: 15

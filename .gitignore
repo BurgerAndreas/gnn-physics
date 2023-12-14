@@ -6,11 +6,12 @@ data/datasets/cylinder_flow_hdf5
 data/datasets/cylinder_flow_pytorch
 data/datasets/cylinder_flow_stanford
 data/datasets/cylinder_flow_pyg
+data/datasets/*/*.pt
 data/datasets/flag_simple
 data/datasets/flag_dynamic_sizing
 *.hdf5
 *.tfrecord
-x_*
+*andreas
 archive
 archive/*
 outputs

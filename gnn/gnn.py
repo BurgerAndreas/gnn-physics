@@ -2,35 +2,11 @@
 # https://colab.research.google.com/drive/1mZAWP6k9R0DE5NxPzF8yL2HpIUG3aoDC?usp=sharing
 
 import torch
-import os
-import random
-import pandas as pd
 import torch_scatter
 import torch.nn as nn
 from torch.nn import Linear, Sequential, LayerNorm, ReLU
 from torch_geometric.nn.conv import MessagePassing
-from torch_geometric.data import DataLoader
-
-import numpy as np
-import time
-import torch.optim as optim
-import tqdm
-import pandas as pd
-import copy
-import matplotlib.pyplot as plt
-import h5py
-import tensorflow.compat.v1 as tf
-import functools
-import json
 from torch_geometric.data import Data
-import enum
-
-from matplotlib import tri as mtri
-from matplotlib import animation
-import matplotlib.pyplot as plt
-import numpy as np
-import os
-from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 import gnn.utils as stats
 

@@ -4,7 +4,7 @@ Simple re-implementation of [Learning Mesh-Based Simulation with Graph Networks]
 
 The [original codebase](https://github.com/google-deepmind/deepmind-research/tree/master/meshgraphnets) contains for the `cylinder_flow` and `flag_simple` domains.
 It does not contain the prediction of the sizing field and the corresponding remesher.
-Out of time constraints we do not implement the sizing field and remesher either, but we leave some pseudo-code and ideas how to build both in `/sizing_field`.
+Out of time constraints we do not implement the sizing field and remesher either.
 
 
 ## Installation
@@ -26,15 +26,32 @@ pip3 install black hydra-core
 pip3 install tensorflow tensorrt protobuf==3.20.3
 ```
 
+## Run
 
-### Dataset
+Unzip the data
+```bash
+cd data/datasets/cylinder_flow_pyg/
+# tar -zcvf data_pt.tgz train.pt test.pt
+tar -zxvf data_pt.tgz
+```
+Run the code
+```bash
+cd $ROOT_DIR
+python run_gnn.py
+# Try additional configs like this:
+python run_gnn.py +noise=paper +datasize=small
+```
+
+
+## Dataset
 The `cylinder_flow` dataset contains 1,200 trajectories with 600 timesteps each.
 The data is in `.tfrecord` format. `.tfrecord` is highly optimized, but only works with Tensorflow and can be hard to handle.
 
-We simplify the dataset to 4 trajectories (3 train, 1 test).
-We save the data as numpy arrays in a `.hdf5` file.
-We provide the 4 trajectories in this github repo, you do not need to do anything.
+I simplified the dataset to 4 trajectories (3 train, 1 test).
+I save the data as numpy arrays in a `.hdf5` file.
+I provide the 4 trajectories in this github repo.
 
+#### Optional: more data
 If you want to download the full original `.tfrecord` dataset for `cylinder_flow` (16 GB)
 ```bash
 chmod +x ./data/datasets/download_dataset.sh
@@ -54,19 +71,25 @@ python ./data/datasets/hdf5_to_pyg.py -in 'data/datasets/cylinder_flow_hdf5/trai
 python ./data/datasets/hdf5_to_pyg.py -in 'data/datasets/cylinder_flow_hdf5/test.hdf5' -out 'data/datasets/cylinder_flow_pyg/test.pt'
 ```
 
-## Run
+#### Optional: prior blog data
+I base my code on this [blog post](https://medium.com/stanford-cs224w/learning-mesh-based-flow-simulations-on-graph-networks-44983679cf2d) 
+which ships with some transformed data in `.pt` format.
+Sadly they do not include the code used to transform the data.
+My code still works on their data. 
+In practice their data performs worse than my data conversion, for unknown reasons.
 
+If you want to download their data:
 ```bash
-python run_gnn.py
-python run_gnn.py +noise=paper +datasize=small
+python ./data/datasets/download_pyg_stanford_data.py
 ```
+
 
 ## Future Work
 [] Change `./data/datasets/hdf5_to_pyg.py` to work with any kind of dataset and their features
-To get sizing field prediction to work
+Implement sizing field prediction
 [] Build prediction head and combine with existing GNN 
-[] Build sizing-based remesher
-[] Adapt training loop to learn sizing field prediction on `flag_dynamic_sizing`
+[] Build sizing-based remesher (pseudo-code can be found in [this paper](http://graphics.berkeley.edu/papers/Narain-AAR-2012-11/Narain-AAR-2012-11.pdf) and [A3 of the original paper](https://arxiv.org/abs/2010.03409))
+[] Adapt training loop to learn sizing field prediction on `flag_dynamic_sizing` (Only the `flag_dynamic_sizing` (36 GB) and `sphere_dynamic_sizing` datasets include the necessary data to learn the sizing field)
 
 ## Ressources
 
