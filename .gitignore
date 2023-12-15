@@ -1,21 +1,25 @@
+# ignore all kinds of logging
 */__pycache__
 */.DS_Store
 .idea/*
-data/datasets/cylinder_flow
-data/datasets/cylinder_flow_hdf5
-data/datasets/cylinder_flow_pytorch
-data/datasets/cylinder_flow_stanford
-data/datasets/cylinder_flow_pyg
-data/datasets/*/*.pt
-data/datasets/flag_simple
-data/datasets/flag_dynamic_sizing
-data/datasets/flag_dynamic_sizing/*
-*.hdf5
-*.tfrecord
+outputs
+wandb
+# ignore everything in datasets except scripts
+data/datasets/*
+!data/datasets/*.py
+!data/datasets/*.sh
+# ignore all animations except selected
+data/animations/*
+!data/animations/x_velocity_0_500_datasize_medium_anim.gif
+!data/animations/x_velocity_testtraj_0_500_datasize_medium_anim.gif
+# ignore all plots except selected
+data/2d_loss_plots/*
+!data/2d_loss_plots/default.png
+# ignore all checkpoints except selected
+data/checkpoints/*
+!data/checkpoints/datasize_medium_*
+!data/checkpoints/datasize_medium-noise*
+# ignore notes
 *andreas*
 andreas*
 archive
-archive/*
-outputs
-*/outputs/*
-wandb

@@ -150,7 +150,9 @@ def train(data_train, data_test, stats_list, cfg):
         ).to(cfg.device)
 
         # dataframe with losses
-        df = pd.DataFrame(columns=["epoch", "train_loss", "test_loss", "velocity_val_loss"])
+        df = pd.DataFrame(
+            columns=["epoch", "train_loss", "test_loss", "velocity_val_loss"]
+        )
 
         print("No previous checkpoint found. Starting training from scratch.")
 
@@ -215,7 +217,12 @@ def train(data_train, data_test, stats_list, cfg):
             velocity_val_losses.append(velocity_val_losses[-1])
 
         # log to dataframe
-        df.loc[len(df.index)] = [epoch, losses[-1], test_losses[-1],  velocity_val_losses[-1]] 
+        df.loc[len(df.index)] = [
+            epoch,
+            losses[-1],
+            test_losses[-1],
+            velocity_val_losses[-1],
+        ]
 
         wandb.log(
             {
@@ -291,8 +298,8 @@ def test(
             loss += test_loss
 
             # calculate validation error
-            # Like for the MeshGraphNets model, 
-            # calculate the mask over which we calculate the flow loss 
+            # Like for the MeshGraphNets model,
+            # build the mask over which we calculate the flow loss
             # and add this calculated RMSE value to our val error
             normal = torch.tensor(0)
             outflow = torch.tensor(5)
@@ -373,11 +380,11 @@ def load_train_plot(cfg: DictConfig) -> None:
         data_train=dataset_train, data_test=dataset_test, stats_list=stats_list, cfg=cfg
     )
 
-    f = plotting.save_plots(cfg)
-    wandb.log({"figure": f})
+    # f = plotting.save_plots(cfg)
+    # wandb.log({"figure": f})
 
-    anim_path = plotting.animate_rollout(cfg)
-    wandb.log({"animation": anim_path})
+    # anim_path = plotting.animate_rollout(cfg)
+    # wandb.log({"animation": anim_path})
 
     return
 

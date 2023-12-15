@@ -1,0 +1,30 @@
+model:
+  model_type: meshgraphnet
+  num_layers: 10
+  hidden_dim: 10
+training:
+  epochs: 5000
+  weight_decay: 5e-4
+  lr: 0.001
+  batch_size: 16
+  train_size: 45
+  test_size: 10
+  save_best_model: True
+  # load previous checkpoint for the same config, if it exits
+  resume_checkpoint: True
+data:
+  use_stanford_data: False
+  single_traj: True
+  # different timesteps but same trajectory
+  train_test_same_traj: True
+  noise_scale: 0.0
+  noise_gamma: 1.0
+  datapath: cylinder_flow_pyg/train.pt
+device: cuda
+rseed: 0
+job_name: ${hydra.job.name}
+config_name: ${hydra.job.config_name}
+override_dirname: ${hydra.job.override_dirname}
+# job_name: ${hydra:job.name}
+# config_name: ${hydra:job.config_name}
+# override_dirname: ${hydra:job.override_dirname}

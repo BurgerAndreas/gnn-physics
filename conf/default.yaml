@@ -22,6 +22,9 @@ data:
   datapath: cylinder_flow_pyg/train.pt
 device: cuda
 rseed: 0
+# job_name: ${hydra.job.name}
+# config_name: ${hydra.job.config_name}
+# override_dirname: ${hydra.job.override_dirname}
 job_name: ${hydra:job.name}
 config_name: ${hydra:job.config_name}
 override_dirname: ${hydra:job.override_dirname}
