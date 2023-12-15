@@ -10,7 +10,7 @@ We animate the next-step-predictions for 500 timesteps of the same trajectory we
 The model performs much worse during the first few timestesps (~2-10).
 Since we train less than a single trajectory with randomly selected timesteps, the first few timesteps are rarely seen during training.
 
-![Animation of next-step predictions]([data/animations/x_velocity_0_500_datasize_medium_anim.gif](https://github.com/BurgerAndreas/gnn-physics/blob/main/data/animations/x_velocity_0_500_datasize_medium_anim.gif))
+![Animation of next-step predictions](https://github.com/BurgerAndreas/gnn-physics/blob/main/data/animations/x_velocity_0_500_datasize_medium_anim.gif)
 
 
 ### 2 - Training on more data
@@ -37,7 +37,7 @@ Indeed we see that adding noise during training can reduce the accumulation of e
 
 We can also use the same model on an unseen trajectory, and it generalizes!
 
-![Animation of next-step predictions on a trajectory unseen during training]([data/animations/x_velocity_testtraj_0_500_datasize_medium_anim.gif](https://github.com/BurgerAndreas/gnn-physics/blob/main/data/animations/x_velocity_testtraj_0_500_datasize_medium_anim.gif))
+![Animation of next-step predictions on a trajectory unseen during training](https://github.com/BurgerAndreas/gnn-physics/blob/main/data/animations/x_velocity_testtraj_0_500_datasize_medium_anim.gif)
 
 ### Further experiments
 
