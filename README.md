@@ -2,10 +2,7 @@
 
 Re-implementation of [Learning Mesh-Based Simulation with Graph Networks](https://sites.google.com/view/meshgraphnets) for `cylinder_flow` in PyTorch based on [this blog post](https://medium.com/stanford-cs224w/learning-mesh-based-flow-simulations-on-graph-networks-44983679cf2d).
 
-The [original codebase of the paper](https://github.com/google-deepmind/deepmind-research/tree/master/meshgraphnets) implements the `cylinder_flow` and `flag_simple` domains.
-It does not contain the prediction of the sizing field and the corresponding remesher.
-Out of time constraints we do not implement the sizing field prediction + remesher either.
-
+Look at results.md for a summary!
 
 ## Installation
 
@@ -93,9 +90,13 @@ python ./data/datasets/download_pyg_stanford_data.py
 
 
 ## Future Work
+
+The [original codebase of the paper](https://github.com/google-deepmind/deepmind-research/tree/master/meshgraphnets) implements the `cylinder_flow` and `flag_simple` domains.
 - [ ] Change `./data/datasets/hdf5_to_pyg.py` to work with all datasets with different features
 
-Implement sizing field prediction
+The original codebase also does not contain the prediction of the sizing field and the corresponding remesher.
+Out of time constraints we do not implement the sizing field prediction + remesher either.
+To implement sizing field prediction:
 - [ ] Build prediction head and combine with existing GNN 
 - [ ] Build sizing-based remesher (pseudo-code can be found in [this paper](http://graphics.berkeley.edu/papers/Narain-AAR-2012-11/Narain-AAR-2012-11.pdf) and [A3 of the original paper](https://arxiv.org/abs/2010.03409))
 - [ ] Adapt training loop to learn sizing field prediction on `flag_dynamic_sizing` 
