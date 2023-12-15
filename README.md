@@ -2,7 +2,7 @@
 
 Re-implementation of [Learning Mesh-Based Simulation with Graph Networks](https://sites.google.com/view/meshgraphnets) for `cylinder_flow` in PyTorch based on [this blog post](https://medium.com/stanford-cs224w/learning-mesh-based-flow-simulations-on-graph-networks-44983679cf2d).
 
-Look at results.md for a summary!
+[Look at results.md for a summary!](https://github.com/BurgerAndreas/gnn-physics/blob/main/results.md)
 
 ## Installation
 
